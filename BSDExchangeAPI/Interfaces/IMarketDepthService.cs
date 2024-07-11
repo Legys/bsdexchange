@@ -1,6 +1,6 @@
-using BSDExchange.Domain.Response;
+using BSDExchangeAPI.Domain.Response;
 
-namespace BSDExchange.Interfaces;
+namespace BSDExchangeAPI.Interfaces;
 
 public interface IMarketDepthService
 {

@@ -1,7 +1,7 @@
-using BSDExchange.Interfaces;
+using BSDExchangeAPI.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BSDExchange.Controllers;
+namespace BSDExchangeAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

@@ -1,5 +1,5 @@
-using BSDExchange.Interfaces;
-using BSDExchange.Services;
+using BSDExchangeAPI.Interfaces;
+using BSDExchangeAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,9 +1,9 @@
 using System.Text.Json;
-using BSDExchange.Domain;
-using BSDExchange.Domain.Response;
-using BSDExchange.Interfaces;
+using BSDExchangeAPI.Domain;
+using BSDExchangeAPI.Domain.Response;
+using BSDExchangeAPI.Interfaces;
 
-namespace BSDExchange.Services;
+namespace BSDExchangeAPI.Services;
 
 public class MarketDepthService(HttpClient httpClient): IMarketDepthService
 {

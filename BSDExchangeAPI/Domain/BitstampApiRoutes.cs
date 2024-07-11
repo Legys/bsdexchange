@@ -1,4 +1,4 @@
-namespace BSDExchange.Domain;
+namespace BSDExchangeAPI.Domain;
 
 public static class BitstampApiRoutes
 {

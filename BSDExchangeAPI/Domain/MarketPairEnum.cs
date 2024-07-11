@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace BSDExchange.Domain;
+namespace BSDExchangeAPI.Domain;
 
 public enum MarketPairEnum
 {
