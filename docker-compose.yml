@@ -1,0 +1,6 @@
+﻿services:
+  bsdexchange:
+    image: bsdexchange
+    build:
+      context: .
+      dockerfile: BSDExchange/Dockerfile
