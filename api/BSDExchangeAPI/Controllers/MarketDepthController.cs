@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BSDExchangeAPI.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/market-depth")]
 [ApiController]
 public class MarketDepthController(IMarketDepthService marketDepthService): ControllerBase
 {
