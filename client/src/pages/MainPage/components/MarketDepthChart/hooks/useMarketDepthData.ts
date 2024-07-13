@@ -9,6 +9,7 @@ export const useMarketDepthData = () => {
   return useQuery({
     queryKey: ["marketDepth", marketPair],
     queryFn: () => getMarketDepth(marketPair),
+    refetchIntervalInBackground: true,
     refetchInterval: 1000,
   });
 };

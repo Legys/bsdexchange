@@ -4,5 +4,5 @@ namespace BSDExchangeAPI.Interfaces;
 
 public interface IMarketDepthService
 {
-    public Task<OrderBookResponse> GetMarketDepthAsync(string marketPair);
+    public Task<MarketDepthResponse> GetMarketDepthAsync(string marketPair);
 }

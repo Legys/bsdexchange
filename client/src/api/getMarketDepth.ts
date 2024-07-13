@@ -3,8 +3,8 @@ import { routes } from "@/api/routes";
 export interface OrderBookResponse {
   timestamp: string;
   microtimestamp: string;
-  bids: Array<Array<string>>;
-  asks: Array<Array<string>>;
+  bids: Array<[number, number]>;
+  asks: Array<[number, number]>;
 }
 
 export const getMarketDepth = async (
