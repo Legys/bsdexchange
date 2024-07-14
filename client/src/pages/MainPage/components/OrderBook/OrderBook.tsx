@@ -22,7 +22,6 @@ export const OrderBook = () => {
   if (isLoading || depthData === null) {
     return <div>Loading...</div>;
   }
-  console.log("rerender");
 
   return (
     <div>
