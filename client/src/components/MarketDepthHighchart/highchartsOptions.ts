@@ -10,8 +10,9 @@ export const getHighchartsOptions = (data: {
   chart: {
     type: "area",
   },
+  animation: false,
   title: {
-    text: "ETH-EUR Market Depth",
+    text: "BTC-EUR Market Depth",
   },
   xAxis: {
     crosshair: true,

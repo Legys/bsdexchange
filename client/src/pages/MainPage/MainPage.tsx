@@ -1,6 +1,6 @@
 "use client";
 
-import { OrderBook } from "@/pages/MainPage/components/MarketDepthChart/OrderBook";
+import { OrderBook } from "@/pages/MainPage/components/OrderBook/OrderBook";
 
 export const MainPage = () => {
   return (

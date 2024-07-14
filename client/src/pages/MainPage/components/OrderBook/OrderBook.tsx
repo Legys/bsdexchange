@@ -1,10 +1,14 @@
-import { useMarketDepthData } from "@/pages/MainPage/components/MarketDepthChart/hooks/useMarketDepthData";
-import { useMemo } from "react";
-import { transformOrderBookData } from "@/pages/MainPage/components/MarketDepthChart/helpers/transformOrderBook";
+"use client";
+
 import { MarketDepthHighchart } from "@/components/MarketDepthHighchart/MarketDepthHighchart";
+import { AuditLog } from "@/pages/MainPage/components/AuditLog/AuditLog";
+import { useMarketDepthData } from "@/pages/MainPage/components/OrderBook/hooks/useMarketDepthData";
+import { transformOrderBookData } from "@/pages/MainPage/components/OrderBook/helpers/transformOrderBook";
+import { useMemo } from "react";
 
 export const OrderBook = () => {
-  const { data, isLoading } = useMarketDepthData();
+  const query = useMarketDepthData();
+  const { data, isLoading } = query;
 
   const depthData = useMemo(() => {
     if (!data) {
@@ -17,11 +21,13 @@ export const OrderBook = () => {
   if (isLoading || depthData === null) {
     return <div>Loading...</div>;
   }
+  console.log("rerender");
 
   return (
     <div>
       <h1>BTC/EUR Market Depth Chart</h1>
       <MarketDepthHighchart bids={depthData.bids} asks={depthData.asks} />
+      <AuditLog />
     </div>
   );
 };
