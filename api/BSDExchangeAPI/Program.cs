@@ -9,7 +9,6 @@ var configuration = builder.Configuration;
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<BitstampHttpClient>(client =>
 {
     client.BaseAddress = new Uri("https://www.bitstamp.net/");

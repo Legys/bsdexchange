@@ -11,8 +11,9 @@ export const usePurchaseQuote = () => {
       const amount = parseFloat(btcAmount);
       let totalCost = 0;
       let remainingAmount = amount;
+      const sortedAsks = [...data.asks].sort((a, b) => a[0] - b[0]);
 
-      for (const [price, quantity] of data.asks) {
+      for (const [price, quantity] of sortedAsks) {
         if (remainingAmount <= quantity) {
           totalCost += remainingAmount * price;
           break;
