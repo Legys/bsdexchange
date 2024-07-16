@@ -1,13 +1,11 @@
-using System.Text.Json;
-using BSDExchangeAPI.Domain;
-using BSDExchangeAPI.Domain.Dtos;
+using BSDExchangeAPI.Application.Interfaces;
 using BSDExchangeAPI.Domain.Mappers;
 using BSDExchangeAPI.Domain.Response;
-using BSDExchangeAPI.Interfaces;
+using BSDExchangeAPI.Infrastructure;
 
-namespace BSDExchangeAPI.Services;
+namespace BSDExchangeAPI.Application.Services;
 
-public class MarketDepthService(HttpClient httpClient) : IMarketDepthService
+public class MarketDepthService(BitstampHttpClient bitstampHttpClient) : IMarketDepthService
 {
     private static readonly (int, int) DefaultLimitRange = (1_000, 100_000);
 
@@ -15,21 +13,11 @@ public class MarketDepthService(HttpClient httpClient) : IMarketDepthService
     {
         try
         {
-            var url = BitstampApiRoutes.GetOrderBookRoute(marketPair);
-            var response = await httpClient.GetAsync(url);
+            var data = await bitstampHttpClient.GetOrderBookAsync(marketPair);
 
-            if (!response.IsSuccessStatusCode) throw new Exception($"Failed to get market depth for {marketPair}");
+            if (data is null) throw new Exception($"Failed to get market depth for {marketPair}");
 
-            var data = await response.Content.ReadAsStringAsync();
-
-            var parsed = JsonSerializer.Deserialize<MarketDepthDto>(data, new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            });
-
-            if (parsed == null) throw new Exception($"Failed to parse market depth for {marketPair}");
-
-            var mapped = MarketDepthResponseMapper.MapToResponse(parsed);
+            var mapped = MarketDepthResponseMapper.MapToResponse(data);
             var filtered = LimitMarketDepth(mapped, DefaultLimitRange);
 
             return filtered;

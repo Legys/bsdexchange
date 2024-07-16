@@ -1,6 +1,6 @@
 using System.Globalization;
-using BSDExchangeAPI.Domain.Dtos;
 using BSDExchangeAPI.Domain.Response;
+using OrderBookDto = BSDExchangeAPI.Infrastructure.OrderBookResponse;
 
 namespace BSDExchangeAPI.Domain.Mappers;
 
@@ -11,7 +11,7 @@ public static class MarketDepthResponseMapper
         return decimal.Parse(value, CultureInfo.InvariantCulture);
     }
 
-    public static MarketDepthResponse MapToResponse(MarketDepthDto response)
+    public static MarketDepthResponse MapToResponse(OrderBookDto response)
     {
         return new MarketDepthResponse(
             response.Timestamp,

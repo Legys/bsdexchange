@@ -1,6 +1,7 @@
+using BSDExchangeAPI.Application.Interfaces;
+using BSDExchangeAPI.Application.Services;
 using BSDExchangeAPI.Domain.Settings;
-using BSDExchangeAPI.Interfaces;
-using BSDExchangeAPI.Services;
+using BSDExchangeAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -9,6 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<BitstampHttpClient>(client =>
+{
+    client.BaseAddress = new Uri("https://www.bitstamp.net/");
+});
 
 builder.Services.AddCustomCors(configuration);
 
