@@ -16,8 +16,8 @@ public static class MarketDepthResponseMapper
         return new MarketDepthResponse(
             response.Timestamp,
             response.Microtimestamp,
-            response.Bids.Select(x => x.Select(ParseDecimal).ToList()).ToList(),
-            response.Asks.Select(x => x.Select(ParseDecimal).ToList()).ToList()
+            response.Bids.Select(x => x.Select(ParseDecimal)),
+            response.Asks.Select(x => x.Select(ParseDecimal))
         );
     }
 }

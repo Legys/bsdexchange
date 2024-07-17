@@ -33,8 +33,8 @@ public class MarketDepthService(BitstampHttpClient bitstampHttpClient) : IMarket
         return new MarketDepthResponse(
             marketDepth.Timestamp,
             marketDepth.Microtimestamp,
-            marketDepth.Bids.Where(b => b[0] >= limitRange.Item1).ToList(),
-            marketDepth.Asks.Where(a => a[0] <= limitRange.Item2).ToList()
+            marketDepth.Bids.Where(b => b.First() >= limitRange.Item1).ToList(),
+            marketDepth.Asks.Where(a => a.First() <= limitRange.Item2).ToList()
         );
     }
 }
